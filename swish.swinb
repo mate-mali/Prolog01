@@ -1,0 +1,41 @@
+<div class="notebook">
+
+<div class="nb-cell program" name="p1">
+% Base case: X is the head of the list
+elem(X, [X|_]).
+
+% Recursive case: search in the tail
+elem(X, [_|T]) :- elem(X, T).
+
+% test/3: is X in the list [H|T]?
+test(X, H, T) :- elem(X, [H|T]).
+</div>
+
+<div class="nb-cell query" name="q3">
+test(2,2,[1,3,7])
+</div>
+
+<div class="nb-cell query" name="q1">
+length([1,2,3,4], Dlugosc)
+</div>
+
+<div class="nb-cell program" name="p2">
+select(X, [X|T], T).
+select(X, [H|T], [H|R]) :-
+    select(X, T, R).
+
+perm([], []).
+perm(List, [H|Perm]) :-
+    select(H, List, Rest),
+    perm(Rest, Perm).
+
+perm_two(L1, L2, P) :-
+    append(L1, L2, Combined),
+    permutation(Combined, P).
+</div>
+
+<div class="nb-cell query" name="q2">
+perm_two([1,2],[3,4], Permutacje)
+</div>
+
+</div>
